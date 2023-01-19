@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Card from './components/card/Card';
 import './App.css';
 
-const allCardIds = [1, 2, 1, 2];
-let availableCardIds = [1, 2, 1, 2];
+const allCardIds = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
+let availableCardIds = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6];
 let board = [
-  [randomCard(), randomCard()],
-  [randomCard(), randomCard()]
+  [randomCard(), randomCard(), randomCard(), randomCard()],
+  [randomCard(), randomCard(), randomCard(), randomCard()],
+  [randomCard(), randomCard(), randomCard(), randomCard()]
 ]
 
 function randomCard() {
@@ -21,8 +22,9 @@ class App extends Component {
     super();
     this.state = {
       flippedState: [
-        [false, false],
-        [false, false]
+        [false, false, false, false],
+        [false, false, false, false],
+        [false, false, false, false]
       ],
       previousSelection: undefined,
       clicks: 0
@@ -66,7 +68,7 @@ class App extends Component {
     if (flatState.every(s => s === true)) {
       setTimeout(() => {
         alert('You Won');
-        const initialState = [[false, false], [false, false]];
+        const initialState = [[false, false, false, false], [false, false, false, false], [false, false, false, false]];
         this.setState({ flippedState: initialState })
         this.restart();
       }, 500);
@@ -76,13 +78,13 @@ class App extends Component {
   restart = () => {
     availableCardIds = allCardIds;
     board = [
-      [randomCard(), randomCard()],
-      [randomCard(), randomCard()]
+      [randomCard(), randomCard(), randomCard(), randomCard()],
+      [randomCard(), randomCard(), randomCard(), randomCard()],
+      [randomCard(), randomCard(), randomCard(), randomCard()]
     ]
   }
 
-  //! TODO stop from clicking more than 2 at a time.
-  //! TODO look into making it more dynamic. Too much hard coding.
+  //! TODO look into making it more dynamic. Too much hard coding. Pain to update
 
   render() {
     return (
@@ -90,8 +92,16 @@ class App extends Component {
       <div className="grid-container">
         <Card id={board[0][0]} onClick={this.onClick} position={[0, 0]} flipped={this.state.flippedState[0][0]} />
         <Card id={board[0][1]} onClick={this.onClick} position={[0, 1]} flipped={this.state.flippedState[0][1]} />
+        <Card id={board[0][2]} onClick={this.onClick} position={[0, 2]} flipped={this.state.flippedState[0][2]} />
+        <Card id={board[0][3]} onClick={this.onClick} position={[0, 3]} flipped={this.state.flippedState[0][3]} />
         <Card id={board[1][0]} onClick={this.onClick} position={[1, 0]} flipped={this.state.flippedState[1][0]} />
         <Card id={board[1][1]} onClick={this.onClick} position={[1, 1]} flipped={this.state.flippedState[1][1]} />
+        <Card id={board[1][2]} onClick={this.onClick} position={[1, 2]} flipped={this.state.flippedState[1][2]} />
+        <Card id={board[1][3]} onClick={this.onClick} position={[1, 3]} flipped={this.state.flippedState[1][3]} />
+        <Card id={board[2][0]} onClick={this.onClick} position={[2, 0]} flipped={this.state.flippedState[2][0]} />
+        <Card id={board[2][1]} onClick={this.onClick} position={[2, 1]} flipped={this.state.flippedState[2][1]} />
+        <Card id={board[2][2]} onClick={this.onClick} position={[2, 2]} flipped={this.state.flippedState[2][2]} />
+        <Card id={board[2][3]} onClick={this.onClick} position={[2, 3]} flipped={this.state.flippedState[2][3]} />
       </div>
     );
   }

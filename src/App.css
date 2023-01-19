@@ -4,6 +4,6 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(2, 220px);
+  grid-template-columns: repeat(4, 220px);
   /* text-align: center; */
 }
