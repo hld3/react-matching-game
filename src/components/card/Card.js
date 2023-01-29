@@ -3,7 +3,7 @@ import './Card.css';
 import Front from './Front';
 import Back from './Back';
 
-const Card = ({ id, onClick, position, flipped }) => {
+export default function Card({ id, onClick, position, flipped }) {
     const handleClick = () => {
         // console.log(flipped[position[0]][position[1]]);
         onClick(position);
@@ -16,5 +16,3 @@ const Card = ({ id, onClick, position, flipped }) => {
         </div>
     )
 }
-
-export default Card;
